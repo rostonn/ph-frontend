@@ -1,0 +1,29 @@
+<h1>Dashboard</h1>
+
+<p ng-show="!showPiForm">Add a new pH Controller <span ng-click="showPiFormFunction()" class="glyphicon glyphicon-plus" aria-hidden="true"></span></p>
+<div ng-show="showPiForm">
+  <!-- Add pi with id and nickname -->
+  <form name="newPiForm" ng-submit="insertPi()" novalidate>
+    <div class="form-group">
+      <label for="">Name:</label>
+      <br/>
+    <input type="text" name="name" ng-model="newPi.name" ng-minlength="1" ng-maxlength="20" required>
+    <p ng-show="newPiForm.name.$invalid && !newPiForm.name.$pristine" class="help-block">Enter a name for you pH Controller</p>
+  </div>
+  <div class="form-group">
+    <label for="">pH Controller ID:</label>
+    <br/>
+    <input type="text" name="piid" ng-model="newPi.piid" ng-pattern="/.{10}$/" required>
+    <p ng-show="newPiForm.piid.$invalid && !newPiForm.piid.$pristine" class="help-block">Enter a valid pH Controller ID, it should be a 10 digit number</p>
+  </div>
+  <button type="submit" ng-disabled="signup.$invalid">Submit</button>
+  </form>
+  <p>Hide form <span ng-click="hidePiFormFunction()" class="glyphicon glyphicon-minus" aria-hidden="true"></span></p>
+</div>
+
+<!-- Show All the Raspberry Pi's -->
+<div ng-repeat="pi in piArray">
+  <h1>Pi Name: {{pi.name}}</h1>
+  <h1>Pi Serial Number: {{pi.serial_number}}</h1>
+  <p>Delete this pi: <span ng-click="deletePi(pi)" class="glyphicon glyphicon-remove" aria-hidden="true"></span></p>
+</div>

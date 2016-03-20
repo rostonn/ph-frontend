@@ -1,0 +1,28 @@
+<div>
+  <h1>{{hi}}</h1>
+
+  <!-- Login Form -->
+  <form novalidate class="simple-form">
+    Username:
+    <input type="text" ng-model="user.username" />
+    <br /> password:
+    <input type="password" ng-model="user.password" />
+    <br/>
+    <input type="submit" ng-click="loginlocal()" value="Login" />
+  </form>
+  <a href="#/signup">Create Account</a>
+
+  <!-- <a class="btn google" ng-click="googleauth()">
+    <span class="fa-stack fa-lg">
+      <i class="fa fa-google-plus-square fa-stack-1x"></i>
+    </span> Login
+  </a>
+  <div class="about-foot">
+    <a ng-click="toAbout()">
+      <h1>
+        <span class="glyphicon glyphicon-chevron-down"></span> About
+        <span class="glyphicon glyphicon-chevron-down"></span>
+      </h1>
+    </a>
+  </div> -->
+</div>

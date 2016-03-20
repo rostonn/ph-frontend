@@ -1,0 +1,41 @@
+<h1>Signup</h1>
+<div ng-hide="signupSuccess" class="">
+  <!-- Signup form -->
+
+  <form name="signup" ng-submit="signUp()" novalidate>
+    <div class="form-group">
+      <label for="">Username</label>
+      <br/>
+      <input type="text" name="username" ng-model="user.username" ng-minlength="4" ng-maxlength="15" required>
+      <p ng-show="signup.username.$invalid && signup.username.$touched && signup.username.$viewValue.length<1" class="help-block">Username is required.</p>
+      <p ng-show="signup.username.$error.minlength" class="help-block">Username must be at least 4 characters</p>
+      <p ng-show="signup.username.$error.maxlength" class="help-block">Username cannot be more than 15 characters</p>
+    </div>
+
+  <div class="form-group">
+    <label for="">Email</label>
+    <br/>
+    <input type="email" name="email" ng-model="user.email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" required>
+    <p ng-show="signup.email.$invalid && !signup.email.$pristine && signup.email.$touched" class="help-block">Enter a valid email.</p>
+  </div>
+
+  <div class="form-group">
+    <label for="">Password</label>
+    <br/>
+    <input type="password" name="password" value="" ng-model="user.password" ng-pattern="/^(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[A-Z])(?=.*[a-z])[a-zA-Z0-9!@#$%^&*]{8,30}$/" required>
+    <p ng-show="signup.password.$invalid && !signup.password.$pristine && signup.password.$touched" class="help-block">Password must be between 8 and 30 characters, contain one uppercase letter (A-Z),one lowercase letter (a-z), one number (0-9), and one special character (! @ # $ % *)</p>
+  </div>
+  <div class="form-group">
+    <label for="">Re-enter Password</label>
+    <br/>
+    <input type="password" name="password2" value="" ng-model="password2" required>
+    <p ng-show="signup.password2.$invalid && !signup.password2.$pristine && signup.password2.$touched">Please enter a matching password</p>
+  </div>
+    <button type="submit" ng-disabled="signup.$invalid">Submit</button>
+  </form>
+  <p>Already have an account? <a href="#/login">Login</a></p>
+</div>
+<div ng-show="signupSuccess">
+  <h2>Signup was a Success!</h2>
+  <h2><a href="#/login">Log In</a></h2>
+</div>
